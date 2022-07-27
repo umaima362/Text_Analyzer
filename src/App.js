@@ -3,12 +3,12 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Textform from "./Components/Textform";
 import Alert from "./Components/Alert";
-import About from './Components/About';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+//import About from './Components/About';
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route
+// } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -38,7 +38,7 @@ function App() {
   };
   return (
     <>
-    <Router>
+    {/* <Router> */}
       <Navbar
         title="TextAnalyzer"
         element1="Home"
@@ -48,7 +48,7 @@ function App() {
       />
       <Alert alert={alert} />
       <div className="container my-3" />
-      <Routes>
+      {/* <Routes>
           <Route exact path="/about"  element={<About mode={mode} />}>
          </Route>
           <Route exact path="/" element={<Textform
@@ -59,7 +59,12 @@ function App() {
           
           </Route>
         </Routes>
-        </Router>
+        </Router> */}
+        <Textform
+        heading="Enter your text to analyze"
+        mode={mode}
+        showAlert={showAlert}
+      />
        
     </>
   );

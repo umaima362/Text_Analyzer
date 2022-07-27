@@ -1,7 +1,7 @@
 import React from 'react' ;
 import PropTypes from 'prop-types' ;
 import logo from './images/favicon-96x96.png' ;
-import { Link } from 'react-router-dom' ;
+//import { Link } from 'react-router-dom' ;
 
 
  function Navbar(props) {
@@ -15,17 +15,17 @@ import { Link } from 'react-router-dom' ;
    
      
       <img src={logo} alt="" width="40" height="40"/>
-      <Link className={`navbar-brand text-${props.mode==='dark' ?'light':'dark'} mx-3 `} to="/">{props.title}</Link>
+      <a className={`navbar-brand text-${props.mode==='dark' ?'light':'dark'} mx-3 `} href="/">{props.title}</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className={`nav-link active text-${props.mode==='dark' ?'light':'dark'}`} aria-current="page" to="/">{props.element1}</Link>
+          <a className={`nav-link active text-${props.mode==='dark' ?'light':'dark'}`} aria-current="page" href="#">{props.element1}</a>
         </li>
         <li className="nav-item">
-          <Link className={`nav-link  active text-${props.mode==='dark' ?'light':'dark'}`} to="/about">{props.element2}</Link>
+          {/* <a className={`nav-link  active text-${props.mode==='dark' ?'light':'dark'}`} href="#">{props.element2}</a> */}
         </li>
       </ul>
      { /*<form className="d-flex" role="search">
