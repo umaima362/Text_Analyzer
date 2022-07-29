@@ -1,7 +1,7 @@
 {
 
-  "homepage": "https://umaima362.github.io/Textutils_Umaima",
-
+ 
+  "homepage": "https://umaima362.github.io/TextAnalyzer-22",
   "name": "textutils",
 
   "version": "0.1.0",
@@ -33,7 +33,8 @@
   "scripts": {
 
     "start": "react-scripts start",
-    "predeploy": "npm run build",
+
+  "predeploy": "npm run build",
    "deploy": "gh-pages -d build",
 
     "build": "react-scripts build",

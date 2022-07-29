@@ -78,7 +78,8 @@ props.showAlert('Text alternated', 'success')
   
     let text = document.getElementById( "mybox")
       text.select();
-      navigator.clipboard.writeText(text.value)
+      navigator.clipboard.writeText(text.value) ;
+      document.getSelection().removeAllRanges();
       props.showAlert('Text copied', 'success')
    
     
@@ -87,7 +88,7 @@ props.showAlert('Text alternated', 'success')
 
   const textlength = () =>
   {
-    const arr = text.split(' ');
+    const arr = text.split(/\s+/);
 
   return arr.filter(word => word !== '').length;
    
@@ -109,25 +110,25 @@ props.showAlert('Text alternated', 'success')
     <div>
       <div className="my-3  container"  >
   <h2 className="my-4 " style={{ color: props.mode==='light'?'white':'black'}} >{ props.heading } </h2>
-  <textarea  className="form-control" value={text}  onChange={onchangehandle}  style={{ backgroundColor: props.mode==='light'?'black':'white', color: props.mode==='light'?'white':'black'}}   placeholder = "Enter Your Text Here"  id="mybox" rows="10" ></textarea>
-  <button className={`my-3  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={uppercasetext}>Convert to UPPERCASE</button>
-  <button className={`my-3 mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={lowercasetext}>Convert to lowercase</button>
-  <button className={`my-3 mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={toTitles}>Convert To Titlecase</button>
-  <button className={`my-3 mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={Removetext}>Remove Text</button>
-  <button className={`my-3  mx-3  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={alternatingtext}> AlTeRnATiNG TeXt</button>
-  <button className={`my-3  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={replacetext}>Replace Text</button>
-  <button className={`my-3  mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={duplicatetext}>Duplicate text</button>
-  <button className={`my-3    btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={copytext}>Copy Text</button>
-  <button className={`my-3 mx-1  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={removeSpace}>Remove Extra space</button>
+  <textarea   className="form-control" value={text}  onChange={onchangehandle}  style={{ backgroundColor: props.mode==='light'?'black':'white', color: props.mode==='light'?'white':'black'}}   placeholder = "Enter Your Text Here"  id="mybox" rows="10" ></textarea>
+  <button disabled={text.length===0} className={`my-3  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={uppercasetext}>Convert to UPPERCASE</button>
+  <button disabled={text.length===0} className={`my-3 mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={lowercasetext}>Convert to lowercase</button>
+  <button disabled={text.length===0} className={`my-3 mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={toTitles}>Convert To Titlecase</button>
+  <button disabled={text.length===0}  className={`my-3 mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={Removetext}>Remove Text</button>
+  <button disabled={text.length===0}  className={`my-3  mx-3  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={alternatingtext}> AlTeRnATiNG TeXt</button>
+  <button disabled={text.length===0} className={`my-3  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={replacetext}>Replace Text</button>
+  <button disabled={text.length===0}  className={`my-3  mx-3 btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={duplicatetext}>Duplicate text</button>
+  <button disabled={text.length===0} className={`my-3    btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={copytext}>Copy Text</button>
+  <button disabled={text.length===0} className={`my-3 mx-1  btn btn-outline-${props.mode==='dark' ?'dark':'light'}`}  onClick={removeSpace}>Remove Extra space</button>
   
      </div>
      <div className=" container" style={{ color: props.mode==='light'?'white':'black'}}>
       <h3>Your Text Summary</h3>
       <p>Total charachers : {text.length}</p>
       <p>Total words : {textlength()}</p>
-      <p>Time to read : {0.008 * text.split(" ").length }</p>
+      <p>Time to read : {0.008 * text.split(/\s+/).filter(word => word !== '').length }</p>
       <h3><b>Preview</b></h3>
-      <p>{text.length>0 ? text : 'Enter yor text to preview it' }</p>
+      <p>{text.length>0 ? text : 'Nothing to preview!' }</p>
          </div>
      
 
